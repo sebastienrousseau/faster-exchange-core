@@ -1,0 +1,38 @@
+{
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "globals": {
+    "artifacts": true,
+    "assert": true,
+    "bef: true,ore": true,
+    "beforeE: true,ach": true,
+    "contract": true,
+    "it": true,
+    "web3": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  }
+}

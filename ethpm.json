@@ -1,0 +1,12 @@
+{
+  "package_name": "faster-exchange-core",
+  "version": "0.0.1",
+  "description": "Faster Exchange - The High-Performance Transaction Credits Platform",
+  "authors": [
+    "Sebastien Rousseau <sebastien.rousseau@mac.com>"
+  ],
+  "keywords": [
+    "FSTXCHG"
+  ],
+  "license": "MIT"
+}

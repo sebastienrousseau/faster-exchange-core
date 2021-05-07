@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="-50 -10 650 340.5"
+   style="max-width:650px;"
+   height="100%"
+   width="100%"
+   id="mermaidChart295">
+  <metadata
+     id="metadata106">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style
+     id="style2">
+  /* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid .label {
+  color: #333;
+}
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #ECECFF;
+  stroke: #CCCCFF;
+  stroke-width: 1px;
+}
+.node.clickable {
+  cursor: pointer;
+}
+.arrowheadPath {
+  fill: #333333;
+}
+.edgePath .path {
+  stroke: #333333;
+}
+.edgeLabel {
+  background-color: #e8e8e8;
+}
+.cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important;
+}
+.cluster text {
+  fill: #333;
+}
+.actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+text.actor {
+  fill: black;
+  stroke: none;
+}
+.actor-line {
+  stroke: grey;
+}
+.messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: &quot;2 2&quot;;
+  marker-end: &quot;url(#arrowhead)&quot;;
+  stroke: #333;
+}
+.messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: &quot;2 2&quot;;
+  stroke: #333;
+}
+#arrowhead {
+  fill: #333;
+}
+#crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.messageText {
+  fill: #333;
+  stroke: none;
+}
+.labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+.labelText {
+  fill: black;
+  stroke: none;
+}
+.loopText {
+  fill: black;
+  stroke: none;
+}
+.loopLine {
+  stroke-width: 2;
+  stroke-dasharray: &quot;2 2&quot;;
+  marker-end: &quot;url(#arrowhead)&quot;;
+  stroke: #CCCCFF;
+}
+.note {
+  stroke: #aaaa33;
+  fill: #fff5ad;
+}
+.noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.section {
+  stroke: none;
+  opacity: 0.2;
+}
+.section0 {
+  fill: rgba(102, 102, 255, 0.49);
+}
+.section2 {
+  fill: #fff400;
+}
+.section1,
+.section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.sectionTitle0 {
+  fill: #333;
+}
+.sectionTitle1 {
+  fill: #333;
+}
+.sectionTitle2 {
+  fill: #333;
+}
+.sectionTitle3 {
+  fill: #333;
+}
+.sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.task {
+  stroke-width: 2;
+}
+.taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px;
+}
+.taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.taskText0,
+.taskText1,
+.taskText2,
+.taskText3 {
+  fill: white;
+}
+.task0,
+.task1,
+.task2,
+.task3 {
+  fill: #8a90dd;
+  stroke: #534fbc;
+}
+.taskTextOutside0,
+.taskTextOutside2 {
+  fill: black;
+}
+.taskTextOutside1,
+.taskTextOutside3 {
+  fill: black;
+}
+/* Active task */
+.active0,
+.active1,
+.active2,
+.active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc;
+}
+.activeText0,
+.activeText1,
+.activeText2,
+.activeText3 {
+  fill: black !important;
+}
+/* Completed task */
+.done0,
+.done1,
+.done2,
+.done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2;
+}
+.doneText0,
+.doneText1,
+.doneText2,
+.doneText3 {
+  fill: black !important;
+}
+/* Tasks on the critical line */
+.crit0,
+.crit1,
+.crit2,
+.crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2;
+}
+.activeCrit0,
+.activeCrit1,
+.activeCrit2,
+.activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2;
+}
+.doneCrit0,
+.doneCrit1,
+.doneCrit2,
+.doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.doneCritText0,
+.doneCritText1,
+.doneCritText2,
+.doneCritText3 {
+  fill: black !important;
+}
+.activeCritText0,
+.activeCritText1,
+.activeCritText2,
+.activeCritText3 {
+  fill: black !important;
+}
+.titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black;
+}
+g.classGroup text {
+  fill: #9370DB;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 10px;
+}
+g.classGroup rect {
+  fill: #ECECFF;
+  stroke: #9370DB;
+}
+g.classGroup line {
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+svg .classLabel .box {
+  stroke: none;
+  stroke-width: 0;
+  fill: #ECECFF;
+  opacity: 0.5;
+}
+svg .classLabel .label {
+  fill: #9370DB;
+  font-size: 10px;
+}
+.relation {
+  stroke: #9370DB;
+  stroke-width: 1;
+  fill: none;
+}
+.composition {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.aggregation {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationStart {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationEnd {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+svg {
+  color: rgba(0, 0, 0, 0.65);
+  font: normal normal 400 normal 14px / 21px &quot;Monospaced Number&quot;, &quot;Chinese Quote&quot;, -apple-system, system-ui, &quot;Segoe UI&quot;, Roboto, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+  </style>
+  <g
+     id="g4" />
+  <g
+     id="g13">
+    <line
+       stroke="#999"
+       stroke-width="0.5px"
+       class="actor-line"
+       y2="329.5"
+       x2="75"
+       y1="5"
+       x1="75"
+       id="actor829" />
+    <rect
+       id="rect7"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="0"
+       x="0" />
+    <text
+       id="text11"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="32.5"
+       x="75">
+      <tspan
+         id="tspan9"
+         dy="0"
+         x="75">User</tspan>
+    </text>
+  </g>
+  <g
+     id="g22">
+    <line
+       stroke="#999"
+       stroke-width="0.5px"
+       class="actor-line"
+       y2="329.5"
+       x2="275"
+       y1="5"
+       x1="275"
+       id="actor830" />
+    <rect
+       id="rect16"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="0"
+       x="200" />
+    <text
+       id="text20"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="32.5"
+       x="275">
+      <tspan
+         id="tspan18"
+         dy="0"
+         x="275">ERC223</tspan>
+    </text>
+  </g>
+  <g
+     id="g31">
+    <line
+       stroke="#999"
+       stroke-width="0.5px"
+       class="actor-line"
+       y2="329.5"
+       x2="475"
+       y1="5"
+       x1="475"
+       id="actor831" />
+    <rect
+       id="rect25"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="0"
+       x="400" />
+    <text
+       id="text29"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="32.5"
+       x="475">
+      <tspan
+         id="tspan27"
+         dy="0"
+         x="475">Contract</tspan>
+    </text>
+  </g>
+  <defs
+     id="defs36">
+    <marker
+       orient="auto"
+       markerHeight="4"
+       markerWidth="6"
+       refY="2"
+       refX="5"
+       id="arrowhead">
+      <path
+         id="path33"
+         d="M 0,0 V 4 L6,2 Z" />
+    </marker>
+  </defs>
+  <defs
+     id="defs43">
+    <marker
+       refY="4"
+       refX="16"
+       orient="auto"
+       markerHeight="8"
+       markerWidth="15"
+       id="crosshead">
+      <path
+         id="path38"
+         style="stroke-dasharray: 0, 0;"
+         d="M 9,2 V 6 L16,4 Z"
+         stroke-width="1px"
+         stroke="#000000"
+         fill="black" />
+      <path
+         id="path40"
+         style="stroke-dasharray: 0, 0;"
+         d="M 0,1 L 6,7 M 6,1 L 0,7"
+         stroke-width="1px"
+         stroke="#000000"
+         fill="none" />
+    </marker>
+  </defs>
+  <g
+     id="g49">
+    <text
+       id="text45"
+       style="text-anchor: middle;"
+       class="messageText"
+       y="93"
+       x="175">transfer(address Contract, 1000)</text>
+    <line
+       id="line47"
+       style="fill: none;"
+       marker-end="url(#arrowhead)"
+       stroke="black"
+       stroke-width="2"
+       class="messageLine0"
+       y2="100"
+       x2="275"
+       y1="100"
+       x1="75" />
+  </g>
+  <g
+     id="g53">
+    <rect
+       id="rect51"
+       ry="0"
+       rx="0"
+       height="142.5"
+       width="10"
+       stroke="#666"
+       fill="#f4f4f4"
+       y="102"
+       x="270" />
+  </g>
+  <g
+     id="g67">
+    <rect
+       id="rect55"
+       class="note"
+       ry="0"
+       rx="0"
+       height="99.5"
+       width="150"
+       stroke="#666"
+       fill="#EDF2AE"
+       y="110"
+       x="100" />
+    <text
+       id="text65"
+       class="noteText"
+       fill="black"
+       y="138"
+       x="116">
+      <tspan
+         id="tspan57"
+         x="116">if the address is a</tspan>
+      <tspan
+         id="tspan59"
+         x="116"
+         dy="21">contract the</tspan>
+      <tspan
+         id="tspan61"
+         x="116"
+         dy="21">tokenFallback()</tspan>
+      <tspan
+         id="tspan63"
+         x="116"
+         dy="21">function is called</tspan>
+    </text>
+  </g>
+  <g
+     id="g73">
+    <text
+       id="text69"
+       style="text-anchor: middle;"
+       class="messageText"
+       y="237.5"
+       x="377.5">function tokenFallback ()</text>
+    <line
+       id="line71"
+       style="stroke-dasharray: 3, 3; fill: none;"
+       marker-end="url(#arrowhead)"
+       stroke="black"
+       stroke-width="2"
+       class="messageLine1"
+       y2="244.5"
+       x2="475"
+       y1="244.5"
+       x1="280" />
+  </g>
+  <g
+     id="g77">
+    <rect
+       id="rect75"
+       ry="0"
+       rx="0"
+       height="18"
+       width="10"
+       stroke="#666"
+       fill="#f4f4f4"
+       y="238.5"
+       x="470" />
+  </g>
+  <g
+     id="g85">
+    <rect
+       id="rect79"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="264.5"
+       x="0" />
+    <text
+       id="text83"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="297"
+       x="75">
+      <tspan
+         id="tspan81"
+         dy="0"
+         x="75">User</tspan>
+    </text>
+  </g>
+  <g
+     id="g93">
+    <rect
+       id="rect87"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="264.5"
+       x="200" />
+    <text
+       id="text91"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="297"
+       x="275">
+      <tspan
+         id="tspan89"
+         dy="0"
+         x="275">ERC223</tspan>
+    </text>
+  </g>
+  <g
+     id="g101">
+    <rect
+       id="rect95"
+       class="actor"
+       ry="3"
+       rx="3"
+       height="65"
+       width="150"
+       stroke="#666"
+       fill="#eaeaea"
+       y="264.5"
+       x="400" />
+    <text
+       id="text99"
+       class="actor"
+       alignment-baseline="central"
+       dominant-baseline="central"
+       style="text-anchor: middle;"
+       y="297"
+       x="475">
+      <tspan
+         id="tspan97"
+         dy="0"
+         x="475">Contract</tspan>
+    </text>
+  </g>
+</svg>

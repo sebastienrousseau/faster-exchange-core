@@ -1,0 +1,20 @@
+{
+  "extends": ["solhint:recommended"],
+  "rules": 
+  {
+    "prettier/prettier": "error",  
+    "avoid-throw": "off",
+    "avoid-suicide": "error",
+    "avoid-sha3": "warn",
+    "blank-lines": "off",
+    "compiler-fixed": "off",
+    "indent": ["error", 4],
+    "quotes": ["error", "double"],
+    "max-line-length": ["error", 160],
+    "not-rely-on-time": "off",
+    "separate-by-one-line-in-contract": "off",
+    "code-complexity": "off",
+    "func-param-name-mixedcase": "error",
+    "solidity.linter": "solhint"
+  }
+} 

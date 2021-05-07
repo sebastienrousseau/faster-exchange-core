@@ -1,0 +1,55 @@
+{
+  "name": "faster-exchange-core",
+  "version": "0.0.1",
+  "description": "Faster Exchange - The High-Performance Transaction Credits Platform",
+  "main": "truffle.js, docs/index.html",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "rm -fr build",
+    "compile": "truffle compile",
+    "doc": "scripts/doc.sh",
+    "flatten": "sol-merger './contracts/*.sol' ./flat",
+    "lint:all:fix": "npm run lint:js:fix && npm run lint:sol:fix",
+    "lint:js:fix": "eslint migrations/**/*.js --fix",
+    "lint:js": "eslint migrations/**/*.js",
+    "lint:sol:fix": "solium -d ./contracts/ --fix",
+    "lint:sol": "solium --dir ./contracts/", 
+    "lint": "npm run lint:js && npm run lint:sol",
+    "migrate-local": "truffle migrate --network=ganache --reset",
+    "migrate-ropsten": "truffle migrate --network=ropsten --reset",
+    "pretest": "npm run lint",
+    "prettier:solidity": "prettier --write contracts/**/*.sol",
+    "publish": "truffle publish",
+    "solhint": "solhint contracts/*.sol contracts/*/*.sol test/*.sol test/*/*.sol",
+    "test": "truffle test",
+    "testrpc": "ganache-cli -i 187 --mnemonic \"sebastienrousseau extc ethereum solidity truffle smart-contracts cryptocurrency token eip20 erc223 erc20 erc20-tokens erc677\" --accounts 50",
+    "truffle": "truffle -"
+  },
+  "husky": {
+    "hooks": {
+       "pre-push": "npm run prettier:solidity"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sebastienrousseau/faster-exchange-core.git"
+  },
+  "keywords": [
+    "ethereum"
+  ],
+  "authors": [
+    "Sebastien Rousseau <sebastien.rousseau@mac.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebastienrousseau/faster-exchange-core/issues"
+  },
+  "homepage": "https://github.com/sebastienrousseau/faster-exchange-core#readme",
+  "dependencies": {
+    "truffle": "^5.3.4",
+    "truffle-hdwallet-provider": "^1.0.17"
+  }
+}
