@@ -30,24 +30,25 @@ pragma solidity 0.5.16;
 // Proof of Existence contract, version 1
 contract ProofOfExistence {
 
-    bytes32 public proof;
+    event ProofCreated(bytes32 documentHash, uint256 timestamp);
+
     address public owner = msg.sender;
+    mapping (bytes32 => uint256) hashesById;
 
-    function existence() public {
-        owner = msg.sender; // save the owner.
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
     }
 
-    function doc2sha(string document) public returns (bytes32) {
-        return sha256(document); // convert the document string to bytes32 (sha256)
+    function notarizeHash(bytes32 documentHash) public onlyOwner {
+        uint256 timestamp = block.timestamp;
+        hashesById[documentHash] = timestamp;
+        emit ProofCreated(documentHash, timestamp);
     }
 
-    function store(string memory document) public {
-        proof = doc2sha(document); // then save it into a constant called proof.
-    }
-
-    function destroy() public {
-        if (msg.sender == owner) {
-            selfdestruct(owner); // if you want to delete the existence of the document and recieve the ether, then this would help!
+    function doesProofExist(bytes32 documentHash) public view returns (uint256) {
+        if (hashesById[documentHash] != 0) {
+            return hashesById[documentHash];
         }
     }
 }

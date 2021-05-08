@@ -1,6 +1,6 @@
 pragma solidity 0.5.16;
 
-import '../contracts/Interfaces/IERC20.sol';
+//import '../contracts/Interfaces/IERC20.sol';
 import '../contracts/FasterExchangeToken.sol';
 import '../contracts/Math/SafeMath.sol';
 import '../contracts/Ownable.sol';

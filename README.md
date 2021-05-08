@@ -7,13 +7,13 @@
     <img src="faster-exchange.svg" alt="" width="150" height="150" alt="Faster Exchange Logo" />
   </a>
 
-  # Faster Exchange
+  # Faster Exchange Core
 
   ## Building the High-Performance Transaction Credits Platform
 
-  The Faster Exchange Ethereum Smart Contracts aims to provide a decentralised financial suite that allows delivery of global financial services via a distributed ledger, self-executing smart contracts, and cryptocurrency.
+  The Faster Exchange Ethereum Core smart contracts aims to contribute to a decentralised financial suite that allows delivery of global financial services via a distributed ledger, self-executing smart contracts, and cryptocurrency. This particular repository is the implementation of a system that allows for the creation of Faster Exchange tokens.
 
-- [Faster Exchange](#faster-exchange)
+- [Faster Exchange Core](#faster-exchange-core)
   - [Building the High-Performance Transaction Credits Platform](#building-the-high-performance-transaction-credits-platform)
   - [Setup](#setup)
   - [Testing](#testing)
@@ -21,6 +21,7 @@
     - [Code of Conduct](#code-of-conduct)
     - [License](#license)
     - [Acknowledgments](#acknowledgments)
+    - [Links](#links)
 
 ## Setup
 
@@ -56,20 +57,20 @@ We are committed to preserving and fostering a diverse, welcoming community. Ple
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/sebastienrousseau/faster-exchange-core/blob/master/LICENSE) file for details
 
+### Links
+
+[faster-exchange-core](https://fasterexchange.network)
+[ethereum](https://www.ethereum.org/)
+[solidity](https://solidity.readthedocs.io/en/develop/)
+[truffle](http://truffleframework.com/)
+[testrpc](https://github.com/ethereumjs/testrpc)
+
 ### Acknowledgments
 
 [Faster Exchange](https://fasterexchange.network) is beautifully crafted by these people and a bunch of awesome [contributors](https://github.com/sebastienrousseau/faster-exchange-core/graphs/contributors)
 
 [![Sebastien Rousseau](https://avatars0.githubusercontent.com/u/1394998?s=117)](http://sebastienrousseau.co.uk) 
 
-
 [Sebastien Rousseau](https://github.com/sebastienrousseau) 
  
-
 Faster Exchange is maintained and funded by Sebastien Rousseau.
-
-[faster-exchange-core]: https://fasterexchange.network
-[ethereum]: https://www.ethereum.org/
-[solidity]: https://solidity.readthedocs.io/en/develop/
-[truffle]: http://truffleframework.com/
-[testrpc]: https://github.com/ethereumjs/testrpc
