@@ -93,7 +93,8 @@ contract ERC20 {
         address _from,
         address _to,
         uint256 _amount
-    ) public returns (bool success) {
+    ) public returns (bool success) 
+    {
         require(
             balances[_from] >= _amount &&
                 allowed[_from][msg.sender] >= _amount &&

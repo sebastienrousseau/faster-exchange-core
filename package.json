@@ -10,11 +10,10 @@
   "scripts": {
     "build:contracts:size": "truffle compile && truffle run contract-size",
     "build:contracts": "truffle compile",
-    "build:coverage": "solidity-coverage",
     "build:doc:generation": "solidoc ./contracts/ ./docs",
-    "build:doc": "scripts/doc.sh",
     "build:flatten": "sol-merger './contracts/*.sol' ./flat",
     "execute:clean:build": "rm -fr build",
+    "execute:doc": "scripts/doc.sh",
     "execute:truffle": "truffle -",
     "lint:all:fix": "npm run lint:js:fix && npm run lint:sol:fix",
     "lint:js:fix": "eslint migrations/**/*.js --fix",
@@ -58,6 +57,7 @@
     "g": "^2.0.1",
     "solidoc": "^1.0.5",
     "truffle": "^5.3.5",
+    "truffle-contract-size": "^2.0.1",
     "truffle-hdwallet-provider": "^1.0.17"
   }
 }

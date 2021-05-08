@@ -66,7 +66,8 @@ contract ERC677 is IERC677, ERC20 {
         address _receiver,
         uint256 _amount,
         bytes memory _data
-    ) private {
+    ) private 
+    {
         ERC677Receiver receiver = ERC677Receiver(_receiver);
         receiver.tokenFallback(msg.sender, _amount, _data);
     }

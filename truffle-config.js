@@ -41,6 +41,9 @@ if (fs.existsSync('secrets.json')) {
 }
 
 module.exports = {
+  plugins: [
+    'truffle-contract-size'
+  ],
   networks: {
     ganache: {
       host: '127.0.0.1',
@@ -57,9 +60,9 @@ module.exports = {
       runs: 200,
     },
     compilers: {
-       solc: {
-         version: '0.5.16'
-       }
+      solc: {
+        version: '0.5.16'
+      }
     },
   },
 };
