@@ -1,15 +1,41 @@
-pragma solidity 0.8.2;
-
-//import '../contracts/Interfaces/IERC20.sol';
-import '../contracts/FasterExchangeToken.sol';
-import '../contracts/Math/SafeMath.sol';
-import '../contracts/Ownable.sol';
-
+// SPDX-License-Identifier: MIT
 /**
+ *
+ *  Faster Exchange
+ *  The High-Performance Transaction Credits Platform
+ *
+ *  Copyright 2021 Sebastien Rousseau. All rights reserved.
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in
+ *  all copies or substantial portions of the Software.
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *  THE SOFTWARE.
+ *
+ */
+// solhint-disable
+pragma solidity 0.5.16;
+
+import "./FasterExchangeToken.sol";
+import "./Ownable.sol";
+
+/*
  * @title Faster Exchange Token initial distribution
  *
  * @dev Distribute purchasers, airdrop, reserve, and founder tokens
  */
+
 
 contract FasterExchangeDistribution is Ownable {
     using SafeMath for uint256;
@@ -50,7 +76,7 @@ contract FasterExchangeDistribution is Ownable {
     mapping (address => bool) public airdrops;
 
     modifier onlyOwnerOrAdmin() {
-        require(msg.sender == owner || airdropAdmins[msg.sender]);
+        require(msg.sender == owner || airdropAdmins[msg.sender],"Only owner can call this function.");
         _;
     }
 
@@ -62,10 +88,18 @@ contract FasterExchangeDistribution is Ownable {
     * @param _startTime The time when FasterExchangeDistribution goes live
     */
     function fstXchgDistribution(uint256 _startTime) public {
-        require(_startTime >= now);
-        require(AVAILABLE_TOTAL_SUPPLY == AVAILABLE_PRESALE_SUPPLY.add(AVAILABLE_FOUNDER_SUPPLY).add(AVAILABLE_AIRDROP_SUPPLY).add(AVAILABLE_ADVISOR_SUPPLY).add(AVAILABLE_BONUS1_SUPPLY).add(AVAILABLE_BONUS2_SUPPLY).add(AVAILABLE_BONUS3_SUPPLY).add(AVAILABLE_RESERVE_SUPPLY));
+        require(_startTime >= block.timestamp);
+        require(
+            AVAILABLE_TOTAL_SUPPLY == AVAILABLE_PRESALE_SUPPLY
+            .add(AVAILABLE_FOUNDER_SUPPLY)
+            .add(AVAILABLE_AIRDROP_SUPPLY)
+            .add(AVAILABLE_ADVISOR_SUPPLY)
+            .add(AVAILABLE_BONUS1_SUPPLY)
+            .add(AVAILABLE_BONUS2_SUPPLY)
+            .add(AVAILABLE_BONUS3_SUPPLY)
+            .add(AVAILABLE_RESERVE_SUPPLY));
         startTime = _startTime;
-        fstXchg = new FasterExchangeToken(this);
+        fstXchg = new FasterExchangeToken();
     }
 
   /**
@@ -116,7 +150,7 @@ contract FasterExchangeDistribution is Ownable {
     * @param _recipient is a list of recipients
     */
     function airdropTokens(address[] memory _recipient) public onlyOwnerOrAdmin {
-        require(now >= startTime);
+        require(block.timestamp >= startTime);
         uint airdropped;
         for (uint256 i = 0; i < _recipient.length; i++) {
             if (!airdrops[_recipient[i]]) {
@@ -136,12 +170,14 @@ contract FasterExchangeDistribution is Ownable {
     */
     function transferTokens (address _recipient) public {
         require(allocations[_recipient].amountClaimed < allocations[_recipient].totalAllocated);
-        require(now >= allocations[_recipient].endCliff);
-        require(now >= startTime);
+        require(block.timestamp >= allocations[_recipient].endCliff);
+        require(block.timestamp >= startTime);
         uint256 newAmountClaimed;
-        if (allocations[_recipient].endVesting > now) {
+        if (allocations[_recipient].endVesting > block.timestamp) {
             // Transfer available amount based on vesting schedule and allocation
-            newAmountClaimed = allocations[_recipient].totalAllocated.mul(now.sub(startTime)).div(allocations[_recipient].endVesting.sub(startTime));
+            newAmountClaimed = allocations[_recipient]
+                .totalAllocated.mul(block.timestamp.sub(startTime))
+                .div(allocations[_recipient].endVesting.sub(startTime));
         } else {
             // Transfer total allocated (minus previously claimed tokens)
             newAmountClaimed = allocations[_recipient].totalAllocated;

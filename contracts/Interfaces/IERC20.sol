@@ -24,39 +24,39 @@
  *  THE SOFTWARE.
  *
  */
-
-/**
- * Implements ERC20 token standard: https://github.com/ethereum/EIPs/issues/20
- */
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
-/**
- * @title ERC20 interface
- * @dev see https://github.com/ethereum/EIPs/issues/20
- */
+/// @title Interface of the ERC20 standard as defined in the EIP
 interface IERC20 {
-    function balanceOf(address _owner) external view returns (uint256);
+    /// @return Returns the amount of tokens in existence.
+    function totalSupply() external view returns (uint256);
 
-    function allowance(address _owner, address _spender)
-        external
-        view
-        returns (uint256);
+    /// @return Returns the amount of tokens owned by `account`.
+    function balanceOf(address account) external view returns (uint256);
 
-    function transfer(address _to, uint256 _value) external returns (bool);
+    /// @return Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.
+    function allowance(address owner, address spender) external view returns (uint256);
 
+    /// @notice Moves `amount` tokens from the caller's account to `recipient.
+    /// @return Returns a boolean value indicating whether the operation succeeded.
+    function transfer(address recipient, uint256 amount) external returns (bool);
+
+    /// @notice Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance.
+    /// @return Returns a boolean value indicating whether the operation succeeded.
     function transferFrom(
-        address _from,
-        address _to,
-        uint256 _value
+        address sender,
+        address recipient,
+        uint256 amount
     ) external returns (bool);
 
-    function approve(address _spender, uint256 _value) external returns (bool);
+    /// @notice Sets `amount` as the allowance of `spender` over the caller's tokens.
+    /// @return Returns a boolean value indicating whether the operation succeeded.
+    function approve(address spender, uint256 amount) external returns (bool);
 
+    /// @notice Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero.
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+
+    /// @notice Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance.
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }

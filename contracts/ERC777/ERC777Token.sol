@@ -29,7 +29,8 @@
  * Implements ERC777 token standard: https://github.com/ethereum/EIPs/issues/777
  */
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
+
 
 /**
  * Interface for required functionality in the ERC721 standard
@@ -59,10 +60,7 @@ contract ERC777Token {
 
     function revokeOperator(address operator) public;
 
-    function isOperatorFor(address operator, address tokenHolder)
-        public
-        pure
-        returns (bool);
+    function isOperatorFor(address operator, address tokenHolder) public pure returns (bool);
 
     function operatorSend(
         address from,
@@ -81,25 +79,8 @@ contract ERC777Token {
         bytes userData,
         bytes operatorData
     ); // solhint-disable-next-line separate-by-one-line-in-contract
-    event Minted(
-        address indexed operator,
-        address indexed to,
-        uint256 amount,
-        bytes operatorData
-    );
-    event Burned(
-        address indexed operator,
-        address indexed from,
-        uint256 amount,
-        bytes userData,
-        bytes operatorData
-    );
-    event AuthorizedOperator(
-        address indexed operator,
-        address indexed tokenHolder
-    );
-    event RevokedOperator(
-        address indexed operator,
-        address indexed tokenHolder
-    );
+    event Minted(address indexed operator, address indexed to, uint256 amount, bytes operatorData);
+    event Burned(address indexed operator, address indexed from, uint256 amount, bytes userData, bytes operatorData);
+    event AuthorizedOperator(address indexed operator, address indexed tokenHolder);
+    event RevokedOperator(address indexed operator, address indexed tokenHolder);
 }

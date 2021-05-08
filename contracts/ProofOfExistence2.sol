@@ -27,7 +27,8 @@
 
 // Proof of Existence contract, version 2
 // solhint-disable 
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
+
 
 contract ProofOfExistence2 {
   // state

@@ -30,7 +30,8 @@
  */
 
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
+
 
 /**
  * @title Contract that will work with ERC223 tokens.
@@ -47,5 +48,5 @@ contract ERC223Receiver {
         address _from,
         uint256 _amount,
         bytes memory _data
-    ) virtual public ;
+    ) public;
 }

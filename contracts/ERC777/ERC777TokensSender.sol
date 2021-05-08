@@ -29,7 +29,7 @@
  * Implements ERC777 token standard: https://github.com/ethereum/EIPs/issues/777
  */
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
 interface ERC777TokensSender {
     function tokensToSend(

@@ -29,7 +29,8 @@
  * Implements ERC721 token standard: https://github.com/ethereum/EIPs/issues/721
  */
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
+
 
 /**
  * Interface for required functionality in the ERC721 standard
@@ -45,10 +46,7 @@ contract ERC721Interface {
 
     function approve(address _to, uint256 _tokenId) public;
 
-    function getApproved(uint256 _tokenId)
-        public
-        view
-        returns (address _approved);
+    function getApproved(uint256 _tokenId) public view returns (address _approved);
 
     function transferFrom(
         address _from,
@@ -61,14 +59,6 @@ contract ERC721Interface {
     function implementsERC721() public view returns (bool _implementsERC721);
 
     // Events
-    event Transfer(
-        address indexed _from,
-        address indexed _to,
-        uint256 _tokenId
-    );
-    event Approval(
-        address indexed _owner,
-        address indexed _approved,
-        uint256 _tokenId
-    );
+    event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
+    event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
 }

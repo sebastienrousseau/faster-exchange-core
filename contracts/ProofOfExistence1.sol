@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
 *
 *  Faster Exchange
@@ -24,32 +25,49 @@
 *
 */
 
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
 
 // Proof of Existence contract, version 1
 contract ProofOfExistence {
+    event ProofCreated(uint256 indexed id, bytes32 documentHash);
 
-    event ProofCreated(bytes32 documentHash, uint256 timestamp);
+    address public owner;
 
-    address public owner = msg.sender;
-    mapping (bytes32 => uint256) hashesById;
+    mapping(uint256 => bytes32) hashesById;
 
     modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(
+            msg.sender == owner,
+            "Only the owner is allowed."
+        );
         _;
     }
 
-    function notarizeHash(bytes32 documentHash) public onlyOwner {
-        uint256 timestamp = block.timestamp;
-        hashesById[documentHash] = timestamp;
-        emit ProofCreated(documentHash, timestamp);
+    modifier noHashExistsYet(uint256 id) {
+        require(hashesById[id] == "", "No hash exists for this id.");
+        _;
     }
 
-    function doesProofExist(bytes32 documentHash) public view returns (uint256) {
-        if (hashesById[documentHash] != 0) {
-            return hashesById[documentHash];
-        }
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    function notarizeHash(uint256 id, bytes32 documentHash)
+        public
+        onlyOwner
+        noHashExistsYet(id)
+    {
+        hashesById[id] = documentHash;
+
+        emit ProofCreated(id, documentHash);
+    }
+
+    function doesProofExist(uint256 id, bytes32 documentHash)
+        public
+        view
+        returns (bool)
+    {
+        return hashesById[id] == documentHash;
     }
 }
-

@@ -26,7 +26,8 @@
  */
 
 // solhint-disable 
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
+
 
 /**
  * @title Ownable
@@ -53,8 +54,10 @@ contract Ownable {
     /**
      * @dev Throws if called by any account other than the owner.
      */
-    modifier onlyOwner() {
-        require(msg.sender == owner);
+    modifier onlyOwner {
+        require(
+            msg.sender == owner
+        );
         _;
     }
 

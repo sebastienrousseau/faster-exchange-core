@@ -34,21 +34,22 @@
  *
  */
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
-import '../ERC20/ERC20Interface.sol';
+import "../Interfaces/IERC20.sol";
+
 
 /**
  * @title ERC827 interface, an extension of ERC20 token standard
  * Interface for required functionality in the ERC827 standard
  * for non-fungible tokens.
  */
-contract ERC827Interface is ERC20Interface {
+contract ERC827Interface {
     // Function
     /// @notice Approve `_value` token to `_spender` from `_data`
     /// @param _spender The address of the recipient
     /// @param _value The amount of token to be transferred
-    /// @param _data
+    /// @param _data Transaction metadata.
     /// @return Whether the transfer was successful or not
     function approve(
         address _spender,

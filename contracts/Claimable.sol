@@ -26,7 +26,7 @@
  */
 
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
 
 import "./Ownable.sol";
@@ -50,7 +50,7 @@ contract Claimable is Ownable {
 
     /// @notice Allows the current owner to transfer control of the contract to a newOwner.
     /// @param newOwner  The address to transfer ownership to.
-    function transferOwnership(address newOwner) public override onlyOwner {
+    function transferOwnership(address newOwner) public onlyOwner {
         pendingOwner = newOwner;
     }
 

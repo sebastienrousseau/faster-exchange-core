@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
 *
 *  Faster Exchange
@@ -25,11 +26,12 @@
 */
 
 // solhint-disable 
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
 
-import '../contracts/interfaces/IERC20.sol';
-import './Math/SafeMath.sol';
+import "./interfaces/IERC20.sol";
+import "./Math/SafeMath.sol";
+
 
 /// @title The High-Performance Transaction Credits contract
 /// @author {config.creator}
@@ -40,16 +42,13 @@ contract FasterExchangeToken is IERC20 {
 
   using SafeMath for uint256;
 
-  string public name = 'Faster Exchange';
-  string public symbol = 'FSTXCHG';
+  string public name = "Faster Exchange";
+  string public symbol = "FSTXCHG";
   uint8 public constant decimals = 18;
   uint256 public constant decimalFactor = 10 ** uint256(decimals);
   uint256 public constant totalSupply = 1000000000 * decimalFactor;
   mapping (address => uint256) balances;
   mapping (address => mapping (address => uint256)) internal allowed;
-
-  event Transfer(address indexed from, address indexed to, uint256 value);
-  event Approval(address indexed owner, address indexed spender, uint256 value);
 
 
 /**
@@ -65,7 +64,7 @@ contract FasterExchangeToken is IERC20 {
   /**
   * @dev Gets the balance of the specified address.
   * @param _owner The address to query the the balance of.
-  * @return An uint256 representing the amount owned by the passed address.
+  * @return balance An uint256 representing the amount owned by the passed address.
   */
   function balanceOf(address _owner) public view returns (uint256 balance) {
     return balances[_owner];

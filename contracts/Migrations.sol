@@ -26,7 +26,7 @@
 
 
 // solhint-disable
-pragma solidity 0.8.2;
+pragma solidity 0.5.16;
 
 
 contract Migrations {

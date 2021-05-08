@@ -24,8 +24,8 @@
  *  THE SOFTWARE.
  *
  */
- // solhint-disable
-pragma solidity 0.8.2;
+// solhint-disable
+pragma solidity 0.5.16;
 
 /**
  * @dev Interface of the ERC777Token standard as defined in the EIP.
@@ -37,31 +37,29 @@ pragma solidity 0.8.2;
  * `ERC1820Implementer`.
  */
 
+
 contract IERC223 {
     /**
      * @dev Returns the total supply of the token.
      */
-    uint public _totalSupply;
-    
+    uint256 public _totalSupply;
+
     /**
      * @dev Returns the balance of the `who` address.
      */
-    function balanceOf(address who) public view returns (uint);
-        
-    /**
-     * @dev Transfers `value` tokens from `msg.sender` to `to` address
-     * and returns `true` on success.
-     */
-    function transfer(address to, uint value) public returns (bool success);
-        
+    function balanceOf(address who) public view returns (uint256);
+
     /**
      * @dev Transfers `value` tokens from `msg.sender` to `to` address with `data` parameter
      * and returns `true` on success.
      */
-    function transfer(address to, uint value, bytes memory data) public returns (bool success);
-     
-     /**
+    function transfer(
+        address to,
+        uint256 value
+    ) public returns (bool success);
+
+    /**
      * @dev Event that is fired on successful transfer.
      */
-    event Transfer(address indexed from, address indexed to, uint value, bytes data);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 }

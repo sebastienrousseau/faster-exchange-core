@@ -24,26 +24,13 @@
  *  THE SOFTWARE.
  *
  */
-
-/**
- *  Abstract contract for the full ERC677 Token standard. https://github.com/ethereum/EIPs/issues/677
- */
-
 // solhint-disable
 pragma solidity 0.5.16;
 
-/**
- * @title Contract that will work with ERC677 tokens.
- */
-contract ERC677Receiver {
-    /// @notice ERC677Receiver
-    /// @notice Standard ERC677 function that will handle incoming token transfers.
-    /// @param _from  Token sender address.
-    /// @param _amount Amount of tokens.
-    /// @param _data  Transaction metadata.
-    function tokenFallback(
-        address _from,
-        uint256 _amount,
-        bytes calldata _data
-    ) external returns (bool);
+import "../ERC20/ERC20.sol";
+
+interface IERC677 {
+    event Transfer(address indexed _from, address indexed _to, uint256 _amount, bytes _data);
+
+    function transferAndCall(address _receiver, uint _amount, bytes calldata _data) external returns (bool success);
 }
