@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -24,10 +25,11 @@
  *
  */
 
-// solhint-disable 
-pragma solidity 0.5.16;
+// solhint-disable
+pragma solidity 0.8.2;
 
-import './Ownable.sol';
+
+import "./Ownable.sol";
 
 
 /**
@@ -46,11 +48,9 @@ contract Claimable is Ownable {
         _;
     }
 
-    /**
-    * @dev Allows the current owner to set the pendingOwner address.
-    * @param newOwner The address to transfer ownership to.
-    */
-    function transferOwnership(address newOwner) public onlyOwner {
+    /// @notice Allows the current owner to transfer control of the contract to a newOwner.
+    /// @param newOwner  The address to transfer ownership to.
+    function transferOwnership(address newOwner) public override onlyOwner {
         pendingOwner = newOwner;
     }
 

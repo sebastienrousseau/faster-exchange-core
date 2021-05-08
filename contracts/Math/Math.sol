@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -24,7 +25,7 @@
  *
  */
 
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 /**
  * @title Math

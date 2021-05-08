@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -24,7 +25,7 @@
  *
  */
 
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 // ERC20 Standard Token interface
 // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md

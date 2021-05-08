@@ -24,51 +24,44 @@
  *  THE SOFTWARE.
  *
  */
-
-/**
- * Implements ERC721 token standard: https://github.com/ethereum/EIPs/issues/721
- */
-// solhint-disable
+ // solhint-disable
 pragma solidity 0.8.2;
 
 /**
- * Interface for required functionality in the ERC721 standard
- * for non-fungible tokens.
+ * @dev Interface of the ERC777Token standard as defined in the EIP.
+ *
+ * This contract uses the
+ * [ERC1820 registry standard](https://eips.ethereum.org/EIPS/eip-1820) to let
+ * token holders and recipients react to token movements by using setting implementers
+ * for the associated interfaces in said registry. See `IERC1820Registry` and
+ * `ERC1820Implementer`.
  */
-contract ERC721Interface {
-    // Function
-    function totalSupply() public view returns (uint256 _totalSupply);
 
-    function balanceOf(address _owner) public view returns (uint256 _balance);
-
-    function ownerOf(uint256 _tokenId) public view returns (address _owner);
-
-    function approve(address _to, uint256 _tokenId) public;
-
-    function getApproved(uint256 _tokenId)
-        public
-        view
-        returns (address _approved);
-
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _tokenId
-    ) public;
-
-    function transfer(address _to, uint256 _tokenId) public;
-
-    function implementsERC721() public view returns (bool _implementsERC721);
-
-    // Events
-    event Transfer(
-        address indexed _from,
-        address indexed _to,
-        uint256 _tokenId
-    );
-    event Approval(
-        address indexed _owner,
-        address indexed _approved,
-        uint256 _tokenId
-    );
+contract IERC223 {
+    /**
+     * @dev Returns the total supply of the token.
+     */
+    uint public _totalSupply;
+    
+    /**
+     * @dev Returns the balance of the `who` address.
+     */
+    function balanceOf(address who) public view returns (uint);
+        
+    /**
+     * @dev Transfers `value` tokens from `msg.sender` to `to` address
+     * and returns `true` on success.
+     */
+    function transfer(address to, uint value) public returns (bool success);
+        
+    /**
+     * @dev Transfers `value` tokens from `msg.sender` to `to` address with `data` parameter
+     * and returns `true` on success.
+     */
+    function transfer(address to, uint value, bytes memory data) public returns (bool success);
+     
+     /**
+     * @dev Event that is fired on successful transfer.
+     */
+    event Transfer(address indexed from, address indexed to, uint value, bytes data);
 }

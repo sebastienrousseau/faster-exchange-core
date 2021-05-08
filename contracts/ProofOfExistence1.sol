@@ -24,7 +24,7 @@
 *
 */
 
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 
 // Proof of Existence contract, version 1

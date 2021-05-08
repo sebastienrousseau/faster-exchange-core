@@ -25,7 +25,7 @@
 */
 
 // solhint-disable 
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 
 import '../contracts/interfaces/IERC20.sol';

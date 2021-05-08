@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -29,70 +30,79 @@
  */
 
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
-contract ERC223Interface {
+import './ERC223.sol';
+
+contract ERC223Interface is ERC223 {
     /**
      * @notice ERC223Interface::totalSupply
-     * @return total amount of tokens
-     * @return uint256
+     * @return totalSupply total amount of tokens
      */
     uint256 public totalSupply;
 
     /**
      * @notice ERC223Interface::balanceOf
      * @return balance
-     * @return uint256
      */
-    function balanceOf(address _owner) public returns (uint256 balance);
+    function balanceOf(address _owner) public virtual returns (uint256 balance);
 
     /**
      * @notice ERC223Interface::transfer
-     * @return transfer success
-     * @return bool
+     * @param _to The address of the recipient
+     * @param _value The amount of token to be transferred
+     * @return success transfer success
      */
     function transfer(address _to, uint256 _value)
         public
+        virtual
         returns (bool success);
 
     /**
      * @notice ERC223Interface::transfer223
-     * @return transfer success
-     * @return bool
+     * @param _to The address of the recipient
+     * @param _value The amount of token to be transferred
+     * @return success transfer success
      */
     function transfer223(
         address _to,
         uint256 _value,
         bytes memory data
-    ) public returns (bool success);
+    ) public virtual returns (bool success);
 
     /**
      * @notice ERC223Interface::transfer223
-     * @return transfer success
-     * @return bool
+     * @param _from The address of the sender
+     * @param _to The address of the recipient
+     * @param _value The amount of token to be transferred
+     * @return success transfer success
      */
     function transferFrom(
         address _from,
         address _to,
         uint256 _value
-    ) public returns (bool success);
+    ) public virtual returns (bool success);
 
     /**
      * @notice ERC223Interface::approve
-     * @return transfer success
-     * @return bool
+     * @param _spender The address of the account able to transfer the tokens
+     * @param _value The amount of token to be transferred
+     * @return success transfer success
      */
     function approve(address _spender, uint256 _value)
         public
+        virtual
         returns (bool success);
 
     /**
      * @notice ERC223Interface::allowance
-     * @return the amount allowance
-     * @return uint256
+     * @param _owner The address of the account owning tokens
+     * @param _spender The address of the account able to transfer the tokens
+     * @return remaining the amount allowance
      */
     function allowance(address _owner, address _spender)
         public
+        virtual
         pure
         returns (uint256 remaining);
 

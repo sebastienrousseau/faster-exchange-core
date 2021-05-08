@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -28,13 +29,13 @@
  * Implements ERC223 token standard: https://github.com/ethereum/EIPs/issues/223
  */
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
-import '../ERC223/ERC223Interface.sol';
+import '../ERC223/IERC223.sol';
 import './ERC223Receiver.sol';
 import '../Math/SafeMath.sol';
 
-contract ERC223 is ERC223Interface {
+contract ERC223 is IERC223 {
     using SafeMath for uint256;
     uint256 private constant MAX_UINT256 = 2**256 - 1;
     mapping(address => uint256) public balances;
@@ -76,10 +77,11 @@ contract ERC223 is ERC223Interface {
      * @notice send `_value` token to `_to` from `msg.sender`
      * @param _to The address of the recipient
      * @param _value The amount of token to be transferred
-     * @return whether the transfer was successful or not
+     * @return success whether the transfer was successful or not
      */
     function transfer(address _to, uint256 _value)
         public
+        override
         returns (bool success)
     {
         require(balances[msg.sender] >= _value);
@@ -96,13 +98,13 @@ contract ERC223 is ERC223Interface {
      * @param _to The address of the recipient
      * @param _amount The amount of token to be transferred
      * @param _data The amount of token to be transferred
-     * @return whether the transfer was successful or not
+     * @return success whether the transfer was successful or not
      */
     function transfer223(
         address _to,
         uint256 _amount,
         bytes memory _data
-    ) public returns (bool success) {
+    ) public override returns (bool success) {
         if (_amount > 0 && _amount <= balances[msg.sender] && isContract(_to)) {
             balances[msg.sender] = balances[msg.sender].sub(_amount);
             balances[_to] = balances[_to].add(_amount);
@@ -127,13 +129,13 @@ contract ERC223 is ERC223Interface {
      * @param _from The address of the sender
      * @param _to The address of the recipient
      * @param _value The amount of token to be transferred
-     * @return whether the transfer was successful or not
+     * @return success whether the transfer was successful or not
      */
     function transferFrom(
         address _from,
         address _to,
         uint256 _value
-    ) public returns (bool success) {
+    ) public override returns (bool success) {
         uint256 allowance = allowed[_from][msg.sender];
         require(balances[_from] >= _value && allowance >= _value);
         balances[_to] += _value;
@@ -149,9 +151,9 @@ contract ERC223 is ERC223Interface {
      * ERC223Token::balanceOf
      * @notice The balance
      * @param _owner The address from which the balance will be retrieved
-     * @return uint256
+     * @return balance uint256
      */
-    function balanceOf(address _owner) public returns (uint256 balance) {
+    function balanceOf(address _owner) public override returns (uint256 balance) {
         return balances[_owner];
     }
 
@@ -161,11 +163,11 @@ contract ERC223 is ERC223Interface {
      * @notice `msg.sender` approves `_spender` to spend `_value` tokens
      * @param _spender The address of the account able to transfer the tokens
      * @param _value The amount of tokens to be approved for transfer
-     * @return Whether the approval was successful or not
-     * @return bool
+     * @return success Whether the approval was successful or not
      */
     function approve(address _spender, uint256 _value)
         public
+        override
         returns (bool success)
     {
         allowed[msg.sender][_spender] = _value;
@@ -178,16 +180,16 @@ contract ERC223 is ERC223Interface {
      * @notice amount allowance
      * @param _owner The address of the account owning tokens
      * @param _spender The address of the account able to transfer the tokens
-     * @return amount of remaining tokens allowed to spent
-     * @return uint256
+     * @return remaining amount of remaining tokens allowed to spent
      */
 
-    function allowance(address tokenOwner, address spender)
+    function allowance(address _owner, address _spender)
         public
+        override
         pure
         returns (uint256 remaining)
     {
-        return allowed[tokenOwner][spender];
+        return allowed[_owner][_spender];
     }
 
     /**
@@ -195,7 +197,7 @@ contract ERC223 is ERC223Interface {
      * @notice confirm spender
      * @dev Retrieve the size of the code on target address, this needs assembly.
      * @param _addr  The address to check if it's a contract.
-     * @return bool
+     * @return success bool
      */
     function isContract(address _addr) public view returns (bool success) {
         uint256 intcodesize;

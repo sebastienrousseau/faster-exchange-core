@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -28,7 +29,7 @@
  * Implements ERC677 token standard: https://github.com/ethereum/EIPs/issues/677
  */
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 import '../ERC677/ERC677Interface.sol';
 import '../ERC677/ERC677Receiver.sol';

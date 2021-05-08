@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -28,7 +29,7 @@
  * Implements ERC777 token standard: https://github.com/ethereum/EIPs/issues/777
  */
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 interface ERC777TokensRecipient {
     function tokensReceived(

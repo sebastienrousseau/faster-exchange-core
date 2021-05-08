@@ -55,7 +55,7 @@
     "-": "^0.0.1",
     "g": "^2.0.1",
     "solidoc": "^1.0.5",
-    "truffle": "^5.3.4",
+    "truffle": "^5.3.5",
     "truffle-hdwallet-provider": "^1.0.17"
   }
 }

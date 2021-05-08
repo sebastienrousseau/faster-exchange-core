@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -33,7 +34,7 @@
  *
  */
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 import '../ERC20/ERC20Interface.sol';
 
@@ -44,6 +45,11 @@ import '../ERC20/ERC20Interface.sol';
  */
 contract ERC827Interface is ERC20Interface {
     // Function
+    /// @notice Approve `_value` token to `_spender` from `_data`
+    /// @param _spender The address of the recipient
+    /// @param _value The amount of token to be transferred
+    /// @param _data
+    /// @return Whether the transfer was successful or not
     function approve(
         address _spender,
         uint256 _value,

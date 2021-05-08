@@ -27,7 +27,7 @@
 
 // Proof of Existence contract, version 3
 // solhint-disable 
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 
 contract ProofOfExistence3 {

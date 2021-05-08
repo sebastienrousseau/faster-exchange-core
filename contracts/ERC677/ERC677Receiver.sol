@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  *
  *  Faster Exchange
@@ -29,7 +30,7 @@
  */
 
 // solhint-disable
-pragma solidity 0.5.16;
+pragma solidity 0.8.2;
 
 /**
  * @title Contract that will work with ERC677 tokens.
