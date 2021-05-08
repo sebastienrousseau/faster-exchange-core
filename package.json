@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "build:contracts:size": "yarn build && truffle run contract-size",
+    "build:contracts:size": "truffle compile && truffle run contract-size",
     "build:contracts": "truffle compile",
     "build:coverage": "solidity-coverage",
     "build:doc:generation": "solidoc ./contracts/ ./docs",
