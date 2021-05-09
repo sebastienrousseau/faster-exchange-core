@@ -28,12 +28,12 @@
 // solhint-disable
 pragma solidity 0.5.16;
 
-import "../token/ERC165/ERC165.sol";
-import "../token/ERC721/ERC721.sol";
+import "../ERC165/ERC165.sol";
+import "../ERC721/ERC721.sol";
 import "../interfaces/token/IERC721Enumerable.sol";
 
 
-**
+/**
  * @title ERC-721 Non-Fungible Token with optional enumeration extension logic
  * @dev See https://eips.ethereum.org/EIPS/eip-721
  */

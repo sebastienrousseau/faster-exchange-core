@@ -28,7 +28,7 @@
 pragma solidity 0.5.16;
 
 import "./FasterExchangeToken.sol";
-import "./Ownable.sol";
+import "../Ownable.sol";
 
 /*
  * @title Faster Exchange Token initial distribution

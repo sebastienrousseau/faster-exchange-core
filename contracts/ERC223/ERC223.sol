@@ -32,112 +32,76 @@
 pragma solidity 0.5.16;
 
 import "../interfaces/token/IERC223.sol";
-import "./ERC223Receiver.sol";
+import "../interfaces/token/IERC223Recipient.sol";
 import "../math/SafeMath.sol";
+import "../utils/Address.sol";
 
 
-contract ERC223 is IERC223 {
-    using SafeMath for uint256;
-    uint256 private constant MAX_UINT256 = 2**256 - 1;
-    mapping(address => uint256) public balances;
-    mapping(address => mapping(address => uint256)) public allowed;
-    /*
-  NOTE:
-  The following variables are OPTIONAL vanities. One does not have to include them.
-  They allow one to customise the token contract and in no way influences the core functionality.
-  Some wallets/interfaces might not even bother to look at this information.
-  */
-    string public name; //fancy name: eg Simon Bucks
-    uint8 public decimals; //How many decimals to show.
-    string public symbol; //An identifier: eg SBX
+contract ERC223Token is IERC223 {
+    using SafeMath for uint;
 
     /**
-     * @notice Constructor to create an ERC223 token
-     * @param _initialAmount Amount of the new token
-     * @param _tokenName Name of the new token
-     * @param _decimalUnits Number of decimals of the new token
-     * @param _tokenSymbol Token Symbol for the new token
+     * @dev See `IERC223.totalSupply`.
      */
-
-    constructor(
-        uint256 _initialAmount,
-        string memory _tokenName,
-        uint8 _decimalUnits,
-        string memory _tokenSymbol
-    ) public {
-        balances[msg.sender] = _initialAmount; // Give the creator all initial tokens
-        _totalSupply = _initialAmount; // Update total supply
-        name = _tokenName; // Set the name for display purposes
-        decimals = _decimalUnits; // Amount of decimals for display purposes
-        symbol = _tokenSymbol; // Set the symbol for display purposes
+    function totalSupply() public view returns (uint256) {
+        return _totalSupply;
     }
 
+    mapping(address => uint) balances; // List of user balances.
+    
     /**
-     * @notice ERC223Token::transfer
-     * @notice Classic ERC20 transfer confirmation
-     * @notice send `_value` token to `_to` from `msg.sender`
-     * @param _to The address of the recipient
-     * @param _value The amount of token to be transferred
-     * @return success whether the transfer was successful or not
+     * @dev Transfer the specified amount of tokens to the specified address.
+     *      Invokes the `tokenFallback` function if the recipient is a contract.
+     *      The token transfer fails if the recipient is a contract
+     *      but does not implement the `tokenFallback` function
+     *      or the fallback function to receive funds.
+     *
+     * @param _to    Receiver address.
+     * @param _value Amount of tokens that will be transferred.
+     * @param _data  Transaction metadata.
      */
-    function transfer(address _to, uint256 _value) public returns (bool success) {
-        require(balances[msg.sender] >= _value);
-        balances[msg.sender] -= _value;
-        balances[_to] += _value;
-        emit Transfer(msg.sender, _to, _value);
+    function transfer(address _to, uint _value, bytes memory _data) public returns (bool success){
+        // Standard function transfer similar to ERC20 transfer with no _data .
+        // Added due to backwards compatibility reasons .
+        balances[msg.sender] = balances[msg.sender].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        if(Address.isContract(_to)) {
+            IERC223Recipient receiver = IERC223Recipient(_to);
+            receiver.tokenFallback(msg.sender, _value, _data);
+        }
+        emit Transfer(msg.sender, _to, _value, _data);
+        return true;
+    }
+    
+    /**
+     * @dev Transfer the specified amount of tokens to the specified address.
+     *      This function works the same with the previous one
+     *      but doesn't contain `_data` param.
+     *      Added due to backwards compatibility reasons.
+     *
+     * @param _to    Receiver address.
+     * @param _value Amount of tokens that will be transferred.
+     */
+    function transfer(address _to, uint _value) public returns (bool success){
+        bytes memory empty = hex"00000000";
+        balances[msg.sender] = balances[msg.sender].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        if(Address.isContract(_to)) {
+            IERC223Recipient receiver = IERC223Recipient(_to);
+            receiver.tokenFallback(msg.sender, _value, empty);
+        }
+        emit Transfer(msg.sender, _to, _value, empty);
         return true;
     }
 
+    
     /**
-     * ERC223Token::balanceOf
-     * @notice The balance
-     * @param _owner The address from which the balance will be retrieved
-     * @return _owner balance uint256
+     * @dev Returns balance of the `_owner`.
+     *
+     * @param _owner   The address whose balance will be returned.
+     * @return balance Balance of the `_owner`.
      */
     function balanceOf(address _owner) public view returns (uint balance) {
         return balances[_owner];
-    }
-
-    /**
-     * ERC223Token::approve
-     * @notice confirm spender
-     * @notice `msg.sender` approves `_spender` to spend `_value` tokens
-     * @param _spender The address of the account able to transfer the tokens
-     * @param _value The amount of tokens to be approved for transfer
-     * @return success Whether the approval was successful or not
-     */
-    // function Approval(address _spender, uint256 _value) public returns (bool success) {
-    //     allowed[msg.sender][_spender] = _value;
-    //     emit Approval(msg.sender, _spender, _value);
-    //     return true;
-    // }
-
-    /**
-     * ERC223Token::allowance
-     * @notice amount allowance
-     * @param _owner The address of the account owning tokens
-     * @param _spender The address of the account able to transfer the tokens
-     * @return remaining amount of remaining tokens allowed to spent
-     */
-
-    function allowance(address _owner, address _spender) public view returns (uint256 remaining) {
-        return allowed[_owner][_spender];
-    }
-
-    /**
-     * ERC223Token::isContract
-     * @notice confirm spender
-     * @dev Retrieve the size of the code on target address, this needs assembly.
-     * @param _addr  The address to check if it's a contract.
-     * @return success bool
-     */
-    function isContract(address _addr) public view returns (bool success) {
-        uint256 intcodesize;
-        /* solium-disable-next-line */
-        assembly {
-            // retrieve the size of the code on target address, this needs assembly
-            intcodesize := extcodesize(_addr)
-        }
-        return (intcodesize > 0);
     }
 }

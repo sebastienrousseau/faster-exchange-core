@@ -32,8 +32,11 @@
 pragma solidity 0.5.16;
 
 import "../interfaces/token/IERC721.sol";
+import "./ERC721Receiver.sol";
 import "../ERC165/ERC165.sol";
 import "../math/SafeMath.sol";
+import "../utils/Address.sol";
+import "../utils/Counters.sol";
 
 
 /**
@@ -44,6 +47,10 @@ contract ERC721 is ERC165, IERC721 {
     using SafeMath for uint256;
     using Address for address;
     using Counters for Counters.Counter;
+
+    event Transfer(address indexed from, address indexed to, uint indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
     // Equals to `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
     // which can be also obtained as `IERC721Receiver(0).onERC721Received.selector`

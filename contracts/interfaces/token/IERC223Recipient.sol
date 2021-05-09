@@ -24,29 +24,20 @@
  *  THE SOFTWARE.
  *
  */
-
-/**
- *  Abstract contract for the full ERC223 Token standard. https://github.com/ethereum/EIPs/issues/223
- */
-
 // solhint-disable
 pragma solidity 0.5.16;
 
-
-/**
+ /**
  * @title Contract that will work with ERC223 tokens.
  */
-contract ERC223Receiver {
-    /**
-     * @dev Standard ERC223 function that will handle incoming token transfers.
-     *
-     * @param _from  Token sender address.
-     * @param _amount Amount of tokens.
-     * @param _data  Transaction metadata.
-     */
-    function tokenFallback(
-        address _from,
-        uint256 _amount,
-        bytes memory _data
-    ) public;
+ 
+contract IERC223Recipient { 
+/**
+ * @dev Standard ERC223 function that will handle incoming token transfers.
+ *
+ * @param _from  Token sender address.
+ * @param _value Amount of tokens.
+ * @param _data  Transaction metadata.
+ */
+    function tokenFallback(address _from, uint _value, bytes memory _data) public;
 }
