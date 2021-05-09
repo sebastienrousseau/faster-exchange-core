@@ -10,10 +10,13 @@
   "scripts": {
     "build:contracts:size": "truffle compile && truffle run contract-size",
     "build:contracts": "truffle compile",
-    "build:doc:generation": "solidoc ./contracts/ ./docs",
+    "build:doc:generation": "solidoc ./ ./docs false",
     "build:flatten": "sol-merger './contracts/*.sol' ./flat",
     "execute:clean:build": "rm -fr build",
     "execute:doc": "scripts/doc.sh",
+    "execute:solhint": "solhint contracts/*.sol contracts/*/*.sol test/*.sol test/*/*.sol",
+    "execute:test": "truffle test",
+    "execute:testrpc": "ganache-cli -i 187 --mnemonic \"sebastienrousseau extc ethereum solidity truffle smart-contracts cryptocurrency token eip20 erc223 erc20 erc20-tokens erc677\" --accounts 50",
     "execute:truffle": "truffle -",
     "lint:all:fix": "npm run lint:js:fix && npm run lint:sol:fix",
     "lint:js:fix": "eslint migrations/**/*.js --fix",
@@ -27,10 +30,7 @@
     "pretest": "npm run lint",
     "prettier:format": "prettier --check --write ./contracts/**/*.sol --config .prettierrc",
     "prettier:solidity": "prettier --write contracts/**/*.sol",
-    "publish": "truffle publish",
-    "run:solhint": "solhint contracts/*.sol contracts/*/*.sol test/*.sol test/*/*.sol",
-    "run:test": "truffle test",
-    "run:testrpc": "ganache-cli -i 187 --mnemonic \"sebastienrousseau extc ethereum solidity truffle smart-contracts cryptocurrency token eip20 erc223 erc20 erc20-tokens erc677\" --accounts 50"
+    "publish": "truffle publish"
   },
   "husky": {
     "hooks": {
