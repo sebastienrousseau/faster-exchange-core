@@ -24,49 +24,37 @@
  *  THE SOFTWARE.
  *
  */
-
-/**
- * Implements ERC827 token standard: https://github.com/ethereum/EIPs/issues/827
- *
- * Interface of a ERC827 token, following the ERC20 standard with extra
- * methods to transfer value and data and execute calls in transfers and
- * approvals.
- *
- */
 // solhint-disable
 pragma solidity 0.5.16;
 
-import "../interfaces/token/IERC20.sol";
-
-
 /**
- * @title ERC827 interface, an extension of ERC20 token standard
- * Interface for required functionality in the ERC827 standard
- * for non-fungible tokens.
+ * @dev Interface of the ERC777Token standard as defined in the EIP.
+ *
+ * This contract uses the
+ * [ERC1820 registry standard](https://eips.ethereum.org/EIPS/eip-1820) to let
+ * token holders and recipients react to token movements by using setting implementers
+ * for the associated interfaces in said registry. See `IERC1820Registry` and
+ * `ERC1820Implementer`.
  */
-contract ERC827Interface {
-    // Function
-    /// @notice Approve `_value` token to `_spender` from `_data`
-    /// @param _spender The address of the recipient
-    /// @param _value The amount of token to be transferred
-    /// @param _data Transaction metadata.
-    /// @return Whether the transfer was successful or not
-    function approve(
-        address _spender,
-        uint256 _value,
-        bytes memory _data
-    ) public returns (bool);
 
+
+interface IERC223 {
+    /**
+     * @dev Returns the balance of the `who` address.
+     */
+    function balanceOf(address who) external view returns (uint256);
+
+    /**
+     * @dev Transfers `value` tokens from `msg.sender` to `to` address with `data` parameter
+     * and returns `true` on success.
+     */
     function transfer(
-        address _to,
-        uint256 _value,
-        bytes memory _data
-    ) public returns (bool);
+        address to,
+        uint256 value
+    ) external view returns (bool success);
 
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _value,
-        bytes memory _data
-    ) public returns (bool);
+    /**
+     * @dev Event that is fired on successful transfer.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
 }

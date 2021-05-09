@@ -27,39 +27,10 @@
 // solhint-disable
 pragma solidity 0.5.16;
 
-/**
- * @dev Interface of the ERC777Token standard as defined in the EIP.
- *
- * This contract uses the
- * [ERC1820 registry standard](https://eips.ethereum.org/EIPS/eip-1820) to let
- * token holders and recipients react to token movements by using setting implementers
- * for the associated interfaces in said registry. See `IERC1820Registry` and
- * `ERC1820Implementer`.
- */
+import "../../ERC20/ERC20.sol";
 
+interface IERC677 {
+    event Transfer(address indexed _from, address indexed _to, uint256 _amount, bytes _data);
 
-contract IERC223 {
-    /**
-     * @dev Returns the total supply of the token.
-     */
-    uint256 public _totalSupply;
-
-    /**
-     * @dev Returns the balance of the `who` address.
-     */
-    function balanceOf(address who) public view returns (uint256);
-
-    /**
-     * @dev Transfers `value` tokens from `msg.sender` to `to` address with `data` parameter
-     * and returns `true` on success.
-     */
-    function transfer(
-        address to,
-        uint256 value
-    ) public returns (bool success);
-
-    /**
-     * @dev Event that is fired on successful transfer.
-     */
-    event Transfer(address indexed from, address indexed to, uint256 value);
+    function transferAndCall(address _receiver, uint _amount, bytes calldata _data) external returns (bool success);
 }

@@ -26,39 +26,20 @@
  */
 
 /**
- * Implements ERC721 token standard: https://github.com/ethereum/EIPs/issues/721
+ * Implements ERC721 token standard: https://github.com/ethereum/EIPs/issues/223
  */
 // solhint-disable
 pragma solidity 0.5.16;
 
+import "../token/IERC721.sol";
 
 /**
- * Interface for required functionality in the ERC721 standard
- * for non-fungible tokens.
+ * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension
+ * @dev See https://eips.ethereum.org/EIPS/eip-721
  */
-contract ERC721Interface {
-    // Function
-    function totalSupply() public view returns (uint256 _totalSupply);
+contract IERC721Enumerable is IERC721 {
+    function totalSupply() public view returns (uint256);
+    function tokenOfOwnerByIndex(address owner, uint256 index) public view returns (uint256 tokenId);
 
-    function balanceOf(address _owner) public view returns (uint256 _balance);
-
-    function ownerOf(uint256 _tokenId) public view returns (address _owner);
-
-    function approve(address _to, uint256 _tokenId) public;
-
-    function getApproved(uint256 _tokenId) public view returns (address _approved);
-
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _tokenId
-    ) public;
-
-    function transfer(address _to, uint256 _tokenId) public;
-
-    function implementsERC721() public view returns (bool _implementsERC721);
-
-    // Events
-    event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
-    event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
+    function tokenByIndex(uint256 index) public view returns (uint256);
 }

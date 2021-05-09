@@ -31,9 +31,9 @@
 // solhint-disable
 pragma solidity 0.5.16;
 
-import "../Interfaces/IERC223.sol";
+import "../interfaces/token/IERC223.sol";
 import "./ERC223Receiver.sol";
-import "../Math/SafeMath.sol";
+import "../math/SafeMath.sol";
 
 
 contract ERC223 is IERC223 {

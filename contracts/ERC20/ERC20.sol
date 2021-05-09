@@ -31,8 +31,8 @@
 // solhint-disable
 pragma solidity 0.5.16;
 
-import "../Interfaces/IERC20.sol";
-import "../Math/SafeMath.sol";
+import "../interfaces/token/IERC20.sol";
+import "../math/SafeMath.sol";
 
 
 contract ERC20 {

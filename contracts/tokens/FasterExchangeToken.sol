@@ -29,8 +29,8 @@
 pragma solidity 0.5.16;
 
 
-import "./interfaces/IERC20.sol";
-import "./Math/SafeMath.sol";
+import "./interfaces/token/IERC20.sol";
+import "./math/SafeMath.sol";
 
 
 /// @title The High-Performance Transaction Credits contract

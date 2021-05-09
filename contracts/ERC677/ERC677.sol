@@ -31,10 +31,10 @@
 // solhint-disable
 pragma solidity 0.5.16;
 
-import "../Interfaces/IERC677.sol";
+import "../interfaces/token/IERC677.sol";
 import "../ERC20/ERC20.sol";
 import "../ERC677/ERC677Receiver.sol";
-import "../Math/SafeMath.sol";
+import "../math/SafeMath.sol";
 
 
 contract ERC677 is IERC677, ERC20 {

@@ -24,13 +24,31 @@
  *  THE SOFTWARE.
  *
  */
-// solhint-disable
+
 pragma solidity 0.5.16;
 
-import "../ERC20/ERC20.sol";
+/**
+ * @dev Collection of functions related to the address type,
+ */
+library Address {
+    /**
+     * @dev Returns true if `account` is a contract.
+     *
+     * This test is non-exhaustive, and there may be false-negatives: during the
+     * execution of a contract's constructor, its address will be reported as
+     * not containing a contract.
+     *
+     * > It is unsafe to assume that an address for which this function returns
+     * false is an externally-owned account (EOA) and not a contract.
+     */
+    function isContract(address account) internal view returns (bool) {
+        // This method relies in extcodesize, which returns 0 for contracts in
+        // construction, since the code is only stored at the end of the
+        // constructor execution.
 
-interface IERC677 {
-    event Transfer(address indexed _from, address indexed _to, uint256 _amount, bytes _data);
-
-    function transferAndCall(address _receiver, uint _amount, bytes calldata _data) external returns (bool success);
+        uint256 size;
+        // solhint-disable-next-line no-inline-assembly
+        assembly { size := extcodesize(account) }
+        return size > 0;
+    }
 }
