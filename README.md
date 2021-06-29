@@ -69,6 +69,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 [Faster Exchange](https://fasterexchange.network) is beautifully crafted by these people and a bunch of awesome [contributors](https://github.com/sebastienrousseau/faster-exchange-core/graphs/contributors)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8d47da855c704bdea1d270d96196ff03)](https://app.codacy.com/gh/sebastienrousseau/faster-exchange-core?utm_source=github.com&utm_medium=referral&utm_content=sebastienrousseau/faster-exchange-core&utm_campaign=Badge_Grade_Settings)
 [![Sebastien Rousseau](https://avatars0.githubusercontent.com/u/1394998?s=117)](http://sebastienrousseau.co.uk) 
 
 [Sebastien Rousseau](https://github.com/sebastienrousseau) 
