@@ -47,7 +47,7 @@
   "authors": [
     "Sebastien Rousseau <sebastien.rousseau@mac.com>"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0 OR MIT",
   "bugs": {
     "url": "https://github.com/sebastienrousseau/faster-exchange-core/issues"
   },
